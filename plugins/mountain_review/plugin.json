@@ -1,0 +1,9 @@
+{
+  "name": "Mountainreview plugin",
+  "version": "0.0.2",
+  "description": "Extension to investigate MountainReview insights",
+  "author_name": "CMauri",
+  "author_url": "https://github.com/cmauri75",
+  "plugin_url": "https://mountainreview.it",
+  "tags": "prompt, search"
+}
