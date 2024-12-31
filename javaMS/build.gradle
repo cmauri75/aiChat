@@ -37,6 +37,7 @@ dependencies {
 	//implementation 'org.springframework.ai:spring-ai-ollama-spring-boot-starter'
 	//implementation 'org.springframework.ai:spring-ai-chroma-store-spring-boot-starter'
 
+	implementation 'org.springframework.ai:spring-ai-openai:1.0.0-M4'
 	implementation 'org.springframework.ai:spring-ai-ollama-spring-boot-starter:1.0.0-M4'
 	//implementation 'org.springframework.ai:spring-ai-chroma-store-spring-boot-starter:1.0.0-M4'
 
@@ -60,7 +61,7 @@ spotless {
 		googleJavaFormat().reflowLongStrings()
 		formatAnnotations()
 		toggleOffOn()
-		licenseHeader '/* Cesare Mauri - Fast Team(C) $YEAR */'
+		licenseHeader '/* Cesare Mauri - Ai MLM Team (C) $YEAR */'
 	}
 }
 compileJava.dependsOn(spotlessJava)

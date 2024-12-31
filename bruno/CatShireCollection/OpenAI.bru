@@ -1,0 +1,32 @@
+meta {
+  name: OpenAI
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{openaiBase}}/v1/chat/completions
+  body: json
+  auth: bearer
+}
+
+headers {
+  Content-Type: application/json
+}
+
+auth:bearer {
+  token: {{openai_apikey}}
+}
+
+body:json {
+  {
+    "model": "gpt-4o-mini",
+    "store": true,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Raccontami una barzelletta sugli sport di montagna"
+      }
+    ]
+  }
+}

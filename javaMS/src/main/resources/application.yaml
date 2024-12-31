@@ -5,6 +5,14 @@ server:
   error:
     include-stacktrace: never
 spring:
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: llama3.2
+    openai:
+      api-key: ${openai_apikey}
+
   jpa:
     hibernate:
       ddl-auto: update

@@ -1,4 +1,5 @@
 .env_secret*
+docker/ollama/datafiles
 
 HELP.md
 target/
