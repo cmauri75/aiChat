@@ -1,0 +1,60 @@
+name: Complete workflow
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
+env:
+  IMAGE: aichat-be
+  java-version: "21"
+  java-distribution: corretto
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  update_release_draft:
+    if: github.ref == 'refs/heads/master'
+    permissions:
+      contents: write
+      pull-requests: write
+      checks: write
+  build-push:
+    permissions:
+      contents: read
+      id-token: write
+      checks: write
+      statuses: write
+      issues: write
+      pull-requests: write
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.output_tag.outputs.tag }}
+    if: ${{  always() && github.ref_type != 'tag' }}
+    steps:
+      - name: pre/post clean
+        uses: dktunited/.github/actions/cleaner@main
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: ${{ env.java-distribution }}
+          java-version: ${{ env.java-version }}
+          overwrite-settings: false
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+      - name: Run tests
+        run: ./gradlew clean test
