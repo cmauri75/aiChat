@@ -1,0 +1,17 @@
+meta {
+  name: Create2Orders
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{sbBase}}/sbAi/api/v1/order/prompt
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "prompt":"Create two orders.  The first order is for user id Sophia with quantity 30.  The second order is for user id Mary with quantity 40.  Randomly generate positive UUID values for the order IDs"
+  }
+}

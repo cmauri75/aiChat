@@ -1,0 +1,17 @@
+meta {
+  name: CreateOrder
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{sbBase}}/sbAi/api/v1/order/prompt
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "prompt":"Create an order for user id Cesare with quantity 100. Randomly generate UUID value for the order ID."
+  }
+}

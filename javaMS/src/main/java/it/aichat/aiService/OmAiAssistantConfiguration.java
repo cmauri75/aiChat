@@ -14,12 +14,13 @@ import org.springframework.context.annotation.Description;
 public class OmAiAssistantConfiguration {
   @Bean
   @Description(
-      "Create an order. The Order ID is identified with orderID. "
-          + "The order quantity is identified by orderQuantity."
-          + "The user is identified by userID. "
-          + "The order quantity should be a positive whole number."
-          + "If any of the parameters like user id and the order quantity is missing"
-          + "then ask the user to provide the missing information.")
+      """
+          Create an order. The Order ID is identified with orderID should be a valid random uuid.
+          The order quantity is identified by orderQuantity.
+          The user is identified by userID.
+          The order quantity should be a positive whole number.
+          If any of the parameters like user id and the order quantity is missing
+          then ask the user to provide the missing information.""")
   public Function<CreateOrderRequest, UUID> createOrderFn(
       OrderManagementService orderManagementService) {
     return createOrderRequest ->

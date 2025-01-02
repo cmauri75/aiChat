@@ -44,6 +44,7 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.instancio:instancio-junit:5.2.1'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
@@ -70,6 +71,9 @@ springBoot {
 	buildInfo()
 }
 
+tasks.named('test') {
+	useJUnitPlatform()
+}
 test {
 	reports {
 		html.required = true

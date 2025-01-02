@@ -1,2 +1,2 @@
 FROM ollama/ollama
-ENTRYPOINT ollama run llama3.2
+CMD ollama pull llama3.2

@@ -6,9 +6,7 @@ import java.util.UUID;
 
 @Entity
 public class OrderEntity {
-  @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
-  private UUID orderID;
+  @Id private UUID orderID;
 
   private String userID;
 
@@ -45,5 +43,18 @@ public class OrderEntity {
 
   public void setOrderQuantity(Integer orderQuantity) {
     this.orderQuantity = orderQuantity;
+  }
+
+  @Override
+  public String toString() {
+    return "OrderEntity{"
+        + "orderID="
+        + orderID
+        + ", userID='"
+        + userID
+        + '\''
+        + ", orderQuantity="
+        + orderQuantity
+        + '}';
   }
 }

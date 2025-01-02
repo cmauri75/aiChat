@@ -1,4 +1,13 @@
 services:
+  db-test:
+    image: postgres:15
+    command: -c 'max_connections=200'
+    ports:
+      - "15432:5432"
+    environment:
+      POSTGRES_DB: testdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
   db:
     image: postgres:17-alpine
     ports:
@@ -9,8 +18,10 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_HOST_AUTH_METHOD: trust
   ollama:
+    profiles:
+      - ollama
     build: ./docker/ollama/Dockerfile
     volumes:
-      - docker/ollama/datafiles:/root/.ollama
+      - ./docker/ollama/datafiles:/root/.ollama
     ports:
       - "11434:11434"
