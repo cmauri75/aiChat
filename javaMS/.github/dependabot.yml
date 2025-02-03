@@ -1,19 +1,9 @@
 version: 2
 registries:
-  github-dktunited:
-    type: git
-    url: https://github.com
-    username: x-access-token
-    password: ${{secrets.DKTUNITED_TOKEN}}
 updates:
   - package-ecosystem: "gradle"
     directory: "/"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "github-actions"
-    registries:
-      - github-dktunited
-    directory: "/"
-    schedule:
-      interval: "weekly"
+
 

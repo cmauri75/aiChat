@@ -1,0 +1,17 @@
+meta {
+  name: CreateConditionallyOrder
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{sbBase}}/sbAi/api/v1/order/prompt
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "prompt": "Create an order for user id Alex with quantity 25, set random UUID for order id . Don’t create any order if the user has more than 2 orders. "
+  }
+}

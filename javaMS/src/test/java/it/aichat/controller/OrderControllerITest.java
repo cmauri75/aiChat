@@ -52,7 +52,7 @@ class OrderControllerITest {
   void when_ask_create_order_it_creates() throws Exception {
     PromptRequest pr =
         new PromptRequest(
-            "Create an order for user id Cesare with quantity 100. Randomly generate UUID value for"
+            "Create an order for userID Cesare with quantity 100. Randomly generate UUID value for"
                 + " the order ID.");
     mockMvc
         .perform(
@@ -77,8 +77,8 @@ class OrderControllerITest {
     PromptRequest pr =
         new PromptRequest(
             "Create two orders. The first order is for user id Sophia with quantity 30. The second"
-                + " order is for user id Mary with quantity 40. Randomly generate positive UUID"
-                + " values for the order IDs.");
+                + " order is for user with a name of a dog and quantity 40. Randomly generate"
+                + " positive UUID values for the order IDs.");
     mockMvc
         .perform(
             post("/api/v1/order/prompt")
@@ -97,7 +97,7 @@ class OrderControllerITest {
     assertThat(res.getFirst().getOrderQuantity()).isEqualTo(30);
     assertThat(res.getFirst().getUserID()).isEqualTo("Sophia");
     assertThat(res.getLast().getOrderQuantity()).isEqualTo(40);
-    assertThat(res.getLast().getUserID()).isEqualTo("Mary");
+    assertThat(res.getLast().getUserID()).isEqualTo("Fido");
 
     orderRepository.deleteAll();
   }
